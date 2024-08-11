@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
+            $table->foreignId('department_id')->constrained()->onDelete('cascade');
             $table->enum('gender', ['Male', 'Female']);
             $table->string('joindate');
+            $table->double('salary');
             $table->string('image')->nullable();
             $table->text('address');
             $table->timestamps();

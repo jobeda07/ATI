@@ -14,7 +14,6 @@
     <section class="section">
       <div class="row">
         <div class="col-lg-10 mx-auto">
-
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">General Form Elements</h5>
@@ -62,6 +61,22 @@
                   <div class="col-sm-10">
                     <input type="date" class="form-control" name="joindate" value="{{old('joindate')}}">
                   </div>
+                </div> 
+                <div class="row mb-3">
+                  <label for="inputDate" class="col-sm-2 col-form-label">Salary</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="salary" value="{{old('salary')}}">
+                  </div>
+                </div> 
+                <div class="row mb-3">
+                  <label for="department" class="col-sm-2 col-form-label"> Department</label>
+                  <div class="col-sm-10">
+                    <select id="department_id" class="form-control" name="department_id">
+                      @foreach ($department as $item)
+                      <option value="{{$item->id}}">{{$item->name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
                 </div>
                 <div class="row mb-3">
                   <label for="inputNumber" class="col-sm-2 col-form-label">Image</label>
@@ -80,12 +95,9 @@
                     <button type="submit" class="btn btn-primary">Submit Form</button>
                   </div>
                 </div>
-
               </form><!-- End General Form Elements -->
-
             </div>
           </div>
-
         </div>
       </div>
     </section>
