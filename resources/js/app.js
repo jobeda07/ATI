@@ -7,12 +7,12 @@ window.Alpine = Alpine;
 Alpine.start();
 
 
-import Vue from 'vue';
+import { createApp } from 'vue';
 import DepartmentList from './components/DepartmentList.vue';
 
-new Vue({
-    el: '#app',
-    components: { DepartmentList }
-});
+const app = createApp({});
+app.component('department-list', DepartmentList);
+app.mount('#app');
+
 
 

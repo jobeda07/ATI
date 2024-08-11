@@ -6,6 +6,7 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 class DepartmentController extends Controller
 {
     public function index()
@@ -16,44 +17,45 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'department' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
         ]);
 
-        return Department::create($request->all());
+        $department = Department::create($request->all());
+        return response()->json($department, 201);
     }
 
-    public function show(Department $department)
+    public function show($id)
     {
-        return $department;
+        return Department::findOrFail($id);
     }
 
-    public function update(Request $request, Department $department)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'department' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
         ]);
 
+        $department = Department::findOrFail($id);
         $department->update($request->all());
-
-        return $department;
+        return response()->json($department, 200);
     }
 
-    public function destroy(Department $department)
+    public function destroy($id)
     {
+        $department = Department::findOrFail($id);
         $department->delete();
-
-        return response(null, 204);
+        return response()->json(null, 204);
     }
 
-
-public function showDepartmentEmployees()
-{
+    
+    public function showDepartmentEmployees()  
+    {
     $departments = Department::all();
     return view('backend.department_view.department_employees', compact('departments'));
-}
+    }
 
-public function getDepartmentEmployees(Request $request)
-{
+    public function getDepartmentEmployees(Request $request)
+    {
     $department = Department::with('employees')->find($request->department_id);
 
     if ($department && $department->employees->count()) {
