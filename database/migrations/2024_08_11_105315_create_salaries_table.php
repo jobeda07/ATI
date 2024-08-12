@@ -18,6 +18,7 @@ return new class extends Migration
         $table->integer('total_working_days');
         $table->integer('attending_days');
         $table->decimal('total_salary', 8, 2);
+        $table->enum('status', ['Paid', 'Unpaid']);
         $table->timestamps();
     });
         

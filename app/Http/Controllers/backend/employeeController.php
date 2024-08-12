@@ -24,6 +24,7 @@ class EmployeeController extends Controller
     }
 
     public function store(Request $request){
+        // return request();
         $request->validate([
             'name' => 'required|max:50',
             'email' => 'required|email|unique:employees,email',
@@ -49,6 +50,7 @@ class EmployeeController extends Controller
         $employee->save();
         return redirect()->route('employee.index');
     }
+
     
     public function edit($id){
         $employee=Employee::find($id);
@@ -58,8 +60,8 @@ class EmployeeController extends Controller
     public function update(Request $request, $id){
          $request->validate([
             'name' => 'required|max:50',
-            'email' => 'required|email|unique:employees,email' . $id,
-             'phone' => 'required|digits:11|unique:employees,phone,' . $id,
+            'email' => 'required|email|unique:employees,email',
+             'phone' => 'required|digits:11|unique:employees,phone,',
             'joindate' => 'required',
             'gender' => 'required',
             'image' => 'required',

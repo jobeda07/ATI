@@ -40,7 +40,7 @@ class SalaryController extends Controller
          
         // Return the data to the view
         return view('backend.salaries.generate', compact('employee', 'request', 'totalSalary'))->with('employees', Employee::all());
-    }
+
 
 
 public function generatePdf(Request $request)

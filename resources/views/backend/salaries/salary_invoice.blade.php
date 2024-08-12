@@ -68,7 +68,7 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <h2>Salary Slip</h2>
+                                <h3>ATL Salary Slip</h3>
                             </td>
                             <td>
                                 <strong>Date:</strong> {{ now()->format('d-m-Y') }}<br>
@@ -87,9 +87,9 @@
                                 <strong>Employee ID:</strong> {{ $employee->id }}
                             </td>
                             <td>
-                                <strong>Address</strong>
+                                <strong>Address:</strong>
                                 {{ $employee->address}}<br>
-                                 <strong>Phpne</strong>
+                                 <strong>Phone:</strong>
                                 {{ $employee->phone}}
                             </td>
                         </tr>

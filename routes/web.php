@@ -39,13 +39,13 @@ Route::middleware('auth')->group(function () {
 
 
    
-Route::get('/department-employees', [DepartmentController::class, 'showDepartmentEmployees'])->name('show.department.employees');
-Route::get('/get-department-employees', [DepartmentController::class, 'getDepartmentEmployees'])->name('get.department.employees');
+    Route::get('/department-employees', [DepartmentController::class, 'showDepartmentEmployees'])->name('show.department.employees');
+    Route::get('/get-department-employees', [DepartmentController::class, 'getDepartmentEmployees'])->name('get.department.employees');
 
 
-Route::get('/generate-slip', [SalaryController::class, 'create'])->name('salaries.create');
-Route::post('/generate-slip', [SalaryController::class, 'generateSlip'])->name('salaries.generateSlip');
-Route::post('/generate-slip/pdf', [SalaryController::class, 'generatePdf'])->name('salaries.generatePdf');
+    Route::get('/generate-slip', [SalaryController::class, 'create'])->name('salaries.create');
+    Route::post('/generate-slip', [SalaryController::class, 'generateSlip'])->name('salaries.generateSlip');
+    Route::post('/generate-slip/pdf', [SalaryController::class, 'generatePdf'])->name('salaries.generatePdf');
 
 });
 
