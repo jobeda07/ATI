@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/generate-slip', [SalaryController::class, 'generateSlip'])->name('salaries.generateSlip');
     Route::post('/generate-slip/pdf', [SalaryController::class, 'generatePdf'])->name('salaries.generatePdf');
 
+    Route::resource('departments', DepartmentController::class);
+
 });
 
 require __DIR__.'/auth.php';

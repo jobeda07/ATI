@@ -4,8 +4,8 @@ namespace App\Http\Controllers\backend;
 use App\Models\Salary;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
-use PDF;
 
 class SalaryController extends Controller
 {
@@ -42,7 +42,7 @@ class SalaryController extends Controller
         return view('backend.salaries.generate', compact('employee', 'request', 'totalSalary'))->with('employees', Employee::all());
 
 
-
+    }
 public function generatePdf(Request $request)
     {
         $employee = Employee::findOrFail($request->employee_id);

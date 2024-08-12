@@ -68,7 +68,7 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <h3>ATL Salary Slip</h3>
+                                <h3>ATI Salary Slip</h3>
                             </td>
                             <td>
                                 <strong>Date:</strong> {{ now()->format('d-m-Y') }}<br>

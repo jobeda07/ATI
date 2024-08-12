@@ -11,42 +11,66 @@ class DepartmentController extends Controller
 {
     public function index()
     {
-        return Department::all();
+        $departments = Department::all();
+        return view('backend.department.index', compact('departments'));
     }
 
+    // Show the form for creating a new department
+    public function create()
+    {
+        return view('backend.department.create');
+    }
+
+    // Store a newly created department in storage
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required',
         ]);
 
-        $department = Department::create($request->all());
-        return response()->json($department, 201);
+        Department::create($request->all());
+
+        return redirect()->route('departments.index')
+                         ->with('success', 'Department created successfully.');
     }
 
-    public function show($id)
+    // Display the specified department
+    public function show(Department $department)
     {
-        return Department::findOrFail($id);
+
+        return view('departments.show', compact('department'));
     }
 
-    public function update(Request $request, $id)
+    // Show the form for editing the specified department
+    public function edit($department)
+    { 
+        $department = Department::find($department);
+        return view('backend.department.edit', compact('department'));
+    }
+
+    // Update the specified department in storage
+    public function update(Request $request,$department)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required',
         ]);
 
-        $department = Department::findOrFail($id);
-        $department->update($request->all());
-        return response()->json($department, 200);
+        $department =Department::find($department);
+        $department->name = $request->name;
+        $department->save();
+
+        return redirect()->route('departments.index')
+                         ->with('success', 'Department updated successfully.');
     }
 
-    public function destroy($id)
+    // Remove the specified department from storage
+    public function destroy(Department $department)
     {
-        $department = Department::findOrFail($id);
         $department->delete();
-        return response()->json(null, 204);
-    }
 
+        return redirect()->route('departments.index')
+                         ->with('success', 'Department deleted successfully.');
+    }
     
     public function showDepartmentEmployees()  
     {

@@ -9,8 +9,8 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="\">
-          <i class="bi bi-grid"></i>
+      <a class="nav-link " href="{{route('departments.index')}}">
+      <i class="bi bi-grid"></i>
           <span>Department</span>
         </a>
       </li>
@@ -45,4 +45,3 @@
   </aside>
 
 
-  <script src="{{ mix('js/app.js') }}"></script>

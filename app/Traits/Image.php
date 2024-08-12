@@ -2,14 +2,21 @@
 
 namespace App\Traits;
 
-use Illuminate\Http\Request;
-use Intervention\Image\Image;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
-trait ImageUpload {
+trait Image
+{
+    /**
+     * Upload an image to the specified disk and path.
+     *
+     * @param \Illuminate\Http\UploadedFile $image
+     * @param string $path
+     * @param string $disk
+     * @return string
+     */
     public function imageUpload(UploadedFile $fieldName, int $width, int $height, string $directory = 'images/')
     {
         $manager = new ImageManager(new Driver());
@@ -30,8 +37,4 @@ trait ImageUpload {
             File::delete($filePath);
         }
     }
-
-
-
-
 }
